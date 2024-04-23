@@ -14,13 +14,14 @@ body {
     overflow-x: hidden;
     background-image: url(../storage/img/fondo.jpg);
     background-size: cover;
-    overflow-y: hidden;
 }
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    max-height: 1600px;
+    margin: 20px auto;
     padding: 2rem;
+    background-color: #f0f0f0a9;
 }
 
 .display-1 {
