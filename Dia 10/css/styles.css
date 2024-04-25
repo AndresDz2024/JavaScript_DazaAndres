@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "Star";
+    src: url(../storage/fonts/stjedise/STJEDISE.TTF);
+}
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    background-image: url(../storage/img/fondo.webp);
+    background-size:cover ;
+    background-repeat: no-repeat;
+    background-attachment: fixed ;
+}
+.table{
+    background-image: url(../storage/img/espacio.jpg);
+}
+
+th, td{
+    color: yellow;
+    font-family: "Star";
+}
+.audio-background {
+    display: none;
+  }
+.container {
+    margin-top: 50px;
+    max-width: 1000px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+#superHeroInfo {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#superHeroHomeworld,
+#superHeroFilms,
+#superHeroSpecies,
+#superHeroVehicles,
+#superHeroStarships,
+#superHeroURL {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    word-wrap: break-word; 
+    max-width: calc(100% - 40px); 
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #f1ffa3;
+}
+
+input[type="number"],
+.btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}

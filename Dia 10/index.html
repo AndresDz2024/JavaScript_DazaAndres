@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starwars</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <audio class="audio-background" controls="" autoplay>
+        <source src="./storage/audio/Star Wars Intro HD 1080p.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+      
+    <div class="container mt-5">
+        <h1 class="text-center"><img src="./storage/img/fondo-removebg-preview.png" alt=""></h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form>
+                    <div class="form-group">
+                        <label for="Id">Ingresa el número del personaje que deseas buscar</label>
+                        <input type="number" value="1" min="1" max="87" id="Id" class="form-control" >
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="fetchSuperHero(); scrollToCharacterInfo()">Obtener información del personaje</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8"> 
+                <div id="characterInfo" class="card mb-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
