@@ -7,19 +7,19 @@ function fetchSuperHero() {
         .then(data => {
             displayHero(data);
             if (data.homeworld) {
-                fetchAndDisplayData(data.homeworld, "Homeworld", "characterHomeworld");
+                fetchAndDisplayData(data.homeworld, "", "characterHomeworld");
             }
             if (data.films.length > 0) {
-                fetchAndDisplayDataList(data.films, "Films", "characterFilms");
+                fetchAndDisplayDataList(data.films, "", "characterFilms");
             }
             if (data.species.length > 0) {
-                fetchAndDisplayDataList(data.species, "Species", "characterSpecies");
+                fetchAndDisplayDataList(data.species, "", "characterSpecies");
             }
             if (data.vehicles.length > 0) {
-                fetchAndDisplayDataList(data.vehicles, "Vehicles", "characterVehicles");
+                fetchAndDisplayDataList(data.vehicles, "", "characterVehicles");
             }
             if (data.starships.length > 0) {
-                fetchAndDisplayDataList(data.starships, "Starships", "characterStarships");
+                fetchAndDisplayDataList(data.starships, "", "characterStarships");
             }
         })
         .catch(error => console.error('Error fetching character:', error));
@@ -29,9 +29,10 @@ function fetchAndDisplayData(url, title, targetElementId) {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            let infoHTML = `<p>${title}:</p><ul>`;
-            for (let key in data) {
-                infoHTML += `<li>${key}: ${data[key]}</li>`;
+            let filteredData = filterLinks(data);
+            let infoHTML = `<ul>`;
+            for (let key in filteredData) {
+                infoHTML += `<li>${key}: ${filteredData[key]}</li>`;
             }
             infoHTML += '</ul>';
             document.getElementById(targetElementId).innerHTML = infoHTML;
@@ -43,16 +44,31 @@ function fetchAndDisplayDataList(urls, title, targetElementId) {
     let promises = urls.map(url => fetch(url).then(response => response.json()));
     Promise.all(promises)
         .then(dataList => {
-            let listHTML = `<p>${title}:</p><ul>`;
+            let listHTML = `<ul>`;
             dataList.forEach(data => {
-                for (let key in data) {
-                    listHTML += `<li>${key}: ${data[key]}</li>`;
+                let filteredData = filterLinks(data);
+                for (let key in filteredData) {
+                    listHTML += `<li>${key}: ${filteredData[key]}</li>`;
                 }
             });
             listHTML += '</ul>';
             document.getElementById(targetElementId).innerHTML = listHTML;
         })
         .catch(error => console.error(`Error fetching ${title.toLowerCase()}:`, error));
+}
+
+function filterLinks(data) {
+    let filteredData = {};
+    for (let key in data) {
+        if (typeof data[key] !== 'string' || !data[key].startsWith('http')) {
+            if (!Array.isArray(data[key])) {
+                filteredData[key] = data[key];
+            } else if (data[key].length === 1) {
+                filteredData[key] = data[key][0];
+            }
+        }
+    }
+    return filteredData;
 }
 
 function displayHero(data) {
@@ -62,22 +78,102 @@ function displayHero(data) {
         heroInfo.innerHTML = `<p>Error: ${data.error}</p>`;
     } else {
         heroInfo.innerHTML = `
-            <p>Nombre: ${data.name}</p>
-            <p>Height: ${data.height}</p>
-            <p>Mass: ${data.mass}</p>
-            <p>hair_color: ${data.hair_color}</p>
-            <p>skin_color: ${data.skin_color}</p>
-            <p>eye_color: ${data.eye_color}</p>
-            <p>birth_year: ${data.birth_year}</p>
-            <p>gender: ${data.gender}</p>
-            <div id="characterHomeworld"></div>
-            <div id="characterFilms"></div>
-            <div id="characterSpecies"></div>
-            <div id="characterVehicles"></div>
-            <div id="characterStarships"></div>
-            <p>Created: ${data.created}</p>
-            <p>Edited: ${data.edited}</p>
-            <p>URL: ${data.url}</p>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th>Name:</th>
+                        <td>${data.name}</td>
+                    </tr>
+                    <tr>
+                        <th>Height:</th>
+                        <td>${data.height}</td>
+                    </tr>
+                    <tr>
+                        <th>Mass:</th>
+                        <td>${data.mass}</td>
+                    </tr>
+                    <tr>
+                        <th>Hair Color:</th>
+                        <td>${data.hair_color}</td>
+                    </tr>
+                    <tr>
+                        <th>Skin Color:</th>
+                        <td>${data.skin_color}</td>
+                    </tr>
+                    <tr>
+                        <th>Eyes Color:</th>
+                        <td>${data.eye_color}</td>
+                    </tr>
+                    <tr>
+                        <th>Birthday:</th>
+                        <td>${data.birth_year}</td>
+                    </tr>
+                    <tr>
+                        <th>Gender:</th>
+                        <td>${data.gender}</td>
+                    </tr>
+                    <tr>
+                        <th>Homeworld:</th>
+                        <td><div id="characterHomeworld"></div></td>
+                    </tr>
+                    <tr>
+                        <th>Films:</th>
+                        <td><div id="characterFilms"></div></td>
+                    </tr>
+                    <tr>
+                        <th>Species:</th>
+                        <td><div id="characterSpecies"></div></td>
+                    </tr>
+                    <tr>
+                        <th>Vehicles:</th>
+                        <td><div id="characterVehicles"></div></td>
+                    </tr>
+                    <tr>
+                        <th>Starships:</th>
+                        <td><div id="characterStarships"></div></td>
+                    </tr>
+                    <tr>
+                        <th>Created:</th>
+                        <td>${data.created}</td>
+                    </tr>
+                    <tr>
+                        <th>Last Edited:</th>
+                        <td>${data.edited}</td>
+                    </tr>
+                    <tr>
+                        <th>URL:</th>
+                        <td>${data.url}</td>
+                    </tr>
+                </tbody>
+            </table>
         `;
     }
+}
+
+function scrollToCharacterInfo() {
+    const characterInfoElement = document.getElementById('characterInfo');
+    const characterInfoPosition = characterInfoElement.getBoundingClientRect().top + window.scrollY;
+    const startPosition = window.scrollY;
+    const distance = characterInfoPosition - startPosition + 4000;
+    const duration = 28000; 
+
+    let start = null;
+
+    function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        window.scrollTo(0, easeInOutQuad(progress, startPosition, distance, duration));
+        if (progress < duration) {
+            window.requestAnimationFrame(step);
+        }
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    window.requestAnimationFrame(step);
 }

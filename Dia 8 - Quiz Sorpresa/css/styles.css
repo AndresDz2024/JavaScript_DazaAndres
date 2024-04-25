@@ -1,11 +1,26 @@
+@font-face {
+    font-family: "Star";
+    src: url(../storage/fonts/stjedise/STJEDISE.TTF);
+}
 body {
     background-color: #f8f9fa;
     font-family: Arial, sans-serif;
     background-image: url(../storage/img/fondo.webp);
     background-size:cover ;
     background-repeat: no-repeat;
+    background-attachment: fixed ;
+}
+.table{
+    background-image: url(../storage/img/espacio.jpg);
 }
 
+th, td{
+    color: yellow;
+    font-family: "Star";
+}
+.audio-background {
+    display: none;
+  }
 .container {
     margin-top: 50px;
     max-width: 1000px;
