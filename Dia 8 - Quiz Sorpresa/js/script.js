@@ -21,9 +21,6 @@ function fetchSuperHero() {
             if (data.starships.length > 0) {
                 fetchAndDisplayDataList(data.starships, "Starships", "characterStarships");
             }
-            if (data.url) {
-                fetchAndDisplayData(data.url, "URL", "characterURL");
-            }
         })
         .catch(error => console.error('Error fetching character:', error));
 }
@@ -78,9 +75,9 @@ function displayHero(data) {
             <div id="characterSpecies"></div>
             <div id="characterVehicles"></div>
             <div id="characterStarships"></div>
-            <div id="characterURL"></div>
             <p>Created: ${data.created}</p>
             <p>Edited: ${data.edited}</p>
+            <p>URL: ${data.url}</p>
         `;
     }
 }
