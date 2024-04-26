@@ -60,16 +60,15 @@ function fetchAndDisplayDataList(urls, title, targetElementId) {
 function filterLinks(data) {
     let filteredData = {};
     for (let key in data) {
-        if (typeof data[key] !== 'string' || !data[key].startsWith('http')) {
-            if (!Array.isArray(data[key])) {
-                filteredData[key] = data[key];
-            } else if (data[key].length === 1) {
-                filteredData[key] = data[key][0];
-            }
+        if (!Array.isArray(data[key])) {
+            filteredData[key] = data[key];
+        } else if (data[key].length === 1) {
+            filteredData[key] = data[key][0];
         }
     }
     return filteredData;
 }
+
 
 function displayHero(data) {
     let heroInfo = document.getElementById("characterInfo");
@@ -154,7 +153,7 @@ function scrollToCharacterInfo() {
     const characterInfoElement = document.getElementById('characterInfo');
     const characterInfoPosition = characterInfoElement.getBoundingClientRect().top + window.scrollY;
     const startPosition = window.scrollY;
-    const distance = characterInfoPosition - startPosition + 4000;
+    const distance = characterInfoPosition - startPosition + 4400;
     const duration = 28000; 
 
     let start = null;
