@@ -1,92 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700;800&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
+  font-family: 'Oxanium', cursive;
 
+}
+input{
+  position: absolute;
+  top: 33vi;
+  left: 38vi;
+  width: 22.5vi;
+  height: 3vi;
+  outline: none;
+  border: 0.2vi solid #333;
+  border-radius: 0.5vi;
+  font-size: 2vi;
+  color: #3a444d;
+  box-shadow: -0.2vi 0.3vi 0 #888, -0.4vi 0.6vi 0 #333
+}
 body {
-  text-align: center;
   background: linear-gradient(to bottom, #5f96c4, #fff);
   min-height: 100vh;
 }
 
-main {
-  display: inline-block;
-  margin-top: 2%;
-  padding: 15px;
+.pokedex{
+  margin-top: 3vi;
+  margin-left: 33vi;
   position: relative;
-}
-
-.pokedex {
-  width: 100%;
-  max-width: 425px;
+  width: 35vi;
+  height: 45vi;
 }
 
 .pokemon__imagen {
   position: absolute;
-  bottom: 55%;
-  left: 50%;
-  transform: translate(-63%, 20%);
-  height: 18%;
+  top: 17vi;
+  left: 44vi;
+  height: 9vi;
 }
-
-.pokemon__datos {
+.pokemon_datos{
   position: absolute;
-  font-weight: 600;
+  top: 28.3vi;
+  right: 39vi;
+  font-size: clamp(0.1vi, 1.5vw, 25px);
+}
+.pokemon_numero{
   color: #aaa;
-  top: 54.5%;
-  right: 27%;
-  font-size: clamp(8px, 5vw, 25px);
 }
 
-.pokemon__nombre {
+.pokemon_nombre {
   color: #384958;
   text-transform: capitalize;
 }
 
-.formulario {
-  position: absolute;
-  width: 65%;
-  top: 65%;
-  left: 13.5%;
-}
-
-.entrada__busqueda {
-  width: 100%;
-  padding: 4%;
-  outline: none;
-  border: 2px solid #333;
-  border-radius: 5px;
-  font-weight: 600;
-  color: #3a444d;
-  font-size: clamp(8px, 5vw, 1rem);
-  box-shadow: -3px 4px 0 #888, -5px 7px 0 #333
-}
-
 .botones {
+  align-items: center;
   position: absolute;
-  bottom: 10%;
-  left: 50%;
-  width: 65%;
-  transform: translate(-57%, 0);
+  top: 38vi;
+  left: 36vi;
+  width: 25vi;
   display: flex;
-  gap: 20px;
+  gap: 3vi;
 }
 
 .boton {
-  width: 50%;
-  padding: 4%;
-  border: 2px solid #000;
-  border-radius: 5px;
-  font-size: clamp(8px, 5vw, 1rem);
+  width: 50vi;
+  height: 5vi;
+  border: 0.2vi solid #000;
+  border-radius: 0.5vi;
   font-weight: 600;
   color: white;
   background-color: #444;
-  box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+  box-shadow: -0.2vi 0.3vi 0 #222, -0.4vi 0.6vi 0 #000;
+  font-size: 1.3vi;
 }
 
 .boton:active {
-  box-shadow: inset -4px 4px 0 #222;
-  font-size: 0.9rem;
+  box-shadow: inset -0.2vi 0.2vi 0 #222;
+  font-size: 0.8vi;
+}
+
+.punto{
+  display: none;
 }

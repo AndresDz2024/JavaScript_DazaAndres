@@ -1,41 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="./css/style.css">
-
-  <script defer src="./js/script.js"></script>
-
-  <title>Pokédex</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  
-  <main>
-    <img src="#" alt="pokemon" class="pokemon__imagen">
-
-    <h1 class="pokemon__datos">
-      <span class="pokemon__numero"></span> -
-      <span class="pokemon__nombre"></span>
-    </h1>
-
-    <form class="formulario">
-      <input
-        type="search"
-        class="entrada__busqueda"
-        placeholder="Nombre o Número"
-        required
-      />
-    </form>
-
+  <div class="pokedexdatos">
+    <img class="pokedex" src="./storage/img/pokedex.png">
+    <input type="text" min="1" max="1000" id="Id" placeholder="Name or Number ">
+    <button class="punto" type="button" onclick="fetchpokemon()"></button>
+    <div id="pokeInfo"></div> 
     <div class="botones">
-      <button class="boton btn-prev">Anterior &lt;</button>
-      <button class="boton btn-next">Siguiente &gt;</button>
+      <button class="boton btn-prev">Prev &lt;</button>
+      <button class="boton btn-next">Next &gt;</button>
     </div>
-
-    <img src="./storage/img/pokedex.png" alt="pokedex" class="pokedex">
-  </main>
-
+  </div>
+  <script src="./js/script.js"></script>
 </body>
 </html>
