@@ -32,11 +32,19 @@ function displaypokemon(data) {
     <img class="pokemon__imagen" src=${pokemonImage}></img>
     `;
     searchPokemon = data.id;
+    playPokemonCry(data.cries.latest);
     console.log(searchPokemon)
   } else {
     pokemonInfo.innerHTML = `<p>Error: Pokémon not found</p>`;
   }
 }
+
+function playPokemonCry(audioUrl) {
+  let audio = document.getElementById("pokemonCry");
+  audio.src = audioUrl;
+  audio.play();
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
   var input = document.getElementById('Id');
