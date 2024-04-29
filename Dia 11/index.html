@@ -9,16 +9,21 @@
 <body>
   <div class="pokedexdatos">
     <img class="pokedex" src="./storage/img/pokedex.png">
-    <input type="text" min="1" max="1000" id="Id" placeholder="Name or Number ">
-    <button class="punto" type="button" onclick="fetchpokemon()"></button>
+    <input class="search" type="text" min="1" max="1000" id="Id" placeholder="Name or Number">
+    <button class="punto" type="button" onclick="fetchpokemon()">Fetch Pokémon</button>
     <div id="pokeInfo"></div> 
     <div class="botones">
       <button class="boton btn-prev">Prev &lt;</button>
       <button class="boton btn-next">Next &gt;</button>
+      <input class="radio" type="range" min="0" max="1" step="0.01" value="10" id="volumeControl">
       <audio id="pokemonCry" controls style="display: none;">
+        <source src="audio/pokemon_cry.mp3" type="audio/mpeg">
       </audio>
     </div>
   </div>
   <script src="./js/script.js"></script>
+  <script>
+   
+  </script>
 </body>
 </html>

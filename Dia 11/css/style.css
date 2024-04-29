@@ -6,7 +6,7 @@
   font-family: 'Oxanium', cursive;
 
 }
-input{
+.search {
   position: absolute;
   top: 33vi;
   left: 38vi;
@@ -83,3 +83,20 @@ body {
 .punto{
   display: none;
 }
+
+.radio {
+  position: absolute;
+  top: 7vi;
+  left: 9vi;
+  height: 5px;
+  background-color: #c50909;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.radio{
+  accent-color: rgb(6, 99, 161);
+}
+

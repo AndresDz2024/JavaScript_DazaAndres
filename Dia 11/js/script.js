@@ -19,6 +19,12 @@ function fetchpokemon() {
     });
 }
 
+const volumeControl = document.getElementById('volumeControl');
+
+volumeControl.addEventListener('input', function() {
+  pokemonCry.volume = this.value;
+});
+
 function displaypokemon(data) {
   let pokemonInfo = document.getElementById("pokeInfo");
 
