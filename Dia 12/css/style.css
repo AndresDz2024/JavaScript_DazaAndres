@@ -1,0 +1,49 @@
+body {
+    background: linear-gradient(to bottom, #2ecc71, #27ae60);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.hand {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    width: 100px;
+    height: auto;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#info-juego {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    border: none;
+    background-color: #fff;
+    color: #2ecc71;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+#resultado {
+    font-size: 24px;
+    font-weight: bold;
+}
