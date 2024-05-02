@@ -5,6 +5,36 @@ let maquinaMazo = [];
 let puntajeJugador = 0;
 let puntajeMaquina = 0;
 let deckId = null;
+let turnoMaquinaActivo = false;
+
+function reiniciarJuego() {
+    jugadorMazo = [];
+    maquinaMazo = [];
+    puntajeJugador = 0;
+    puntajeMaquina = 0;
+    deckId = null;
+    turnoMaquinaActivo = false;
+
+    document.getElementById('jugador-hand').innerHTML = '';
+    document.getElementById('maquina-hand').innerHTML = '';
+
+    document.getElementById('puntuacion-jugador').innerText = '';
+    document.getElementById('puntuacion-maquina').innerText = '';
+
+    document.getElementById('resultado').innerText = '';
+    mostrarBotones();
+    iniciarJuego();
+}
+
+function ocultarBotones() {
+    document.getElementById('hit-btn').style.display = 'none';
+    document.getElementById('stand-btn').style.display = 'none';
+}
+
+function mostrarBotones() {
+    document.getElementById('hit-btn').style.display = 'inline';
+    document.getElementById('stand-btn').style.display = 'inline';
+}
 
 async function iniciarJuego() {
     const respuesta = await fetch(API_URL);
@@ -18,6 +48,7 @@ async function iniciarJuego() {
     mostrarCartasEnMano([maquinaMazo[0]], 'maquina');
     ocultarSegundaCartaMaquina();
     calcularPuntajes();
+    mostrarPuntuacionJugador()
 }
 
 function ocultarSegundaCartaMaquina() {
@@ -31,31 +62,54 @@ function ocultarSegundaCartaMaquina() {
 
 function mostrarSegundaCartaMaquina() {
     const contenedorMaquina = document.getElementById('maquina-hand');
-    contenedorMaquina.removeChild(contenedorMaquina.lastChild);
-    mostrarCartasEnMano([maquinaMazo[1]], 'maquina');
+    contenedorMaquina.removeChild(contenedorMaquina.lastChild); // Remover la carta oculta
+    mostrarCartasEnMano(maquinaMazo, 'maquina'); // Mostrar todas las cartas de la máquina
 }
 
+
 async function finalizarJuego() {
-    mostrarSegundaCartaMaquina();
-    mostrarPuntuacion();
 
-    let resultado = '';
-    if (puntajeJugador > 21) {
-        resultado = "¡Te has pasado de 21! Has perdido.";
-    } else if (puntajeMaquina > 21 || puntajeJugador > puntajeMaquina) {
-        resultado = "¡Felicidades! Has ganado.";
-    } else if (puntajeJugador < puntajeMaquina) {
-        resultado = "La máquina ha ganado.";
-    } else {
-        resultado = "Empate.";
+        mostrarSegundaCartaMaquina();
+        mostrarPuntuaciontotal();
+
+        let resultado = '';
+        if (puntajeJugador > 21) {
+            resultado = "¡Te has pasado de 21! Has perdido.";
+        } else if (puntajeMaquina > 21 || puntajeJugador > puntajeMaquina) {
+            resultado = "¡Felicidades! Has ganado.";
+        } else if (puntajeJugador < puntajeMaquina) {
+            resultado = "La máquina ha ganado.";
+        } else {
+            resultado = "Empate.";
+        }
+
+        mostrarResultado(resultado);
     }
 
-    mostrarResultado(resultado);
-    mostrarSegundaCartaMaquina()
+function plantarse() {
+    ocultarBotones();
+    turnoMaquina();
+}
 
-    if (puntajeJugador <= 21) {
-        await turnoMaquina();
-    }
+function mostrarPuntuacionJugador() {
+    const infoJuegoDiv = document.getElementById('info-juego');
+    const puntuacionJugadorP = document.getElementById('puntuacion-jugador');
+
+    puntuacionJugadorP.innerHTML = `Puntuación Jugador: ${puntajeJugador}`;
+}
+
+function mostrarPuntuaciontotal() {
+    const infoJuegoDiv = document.getElementById('info-juego');
+    const puntuacionJugadorP = document.getElementById('puntuacion-jugador');
+    const puntuacionMaquinaP = document.getElementById('puntuacion-maquina');
+
+    puntuacionJugadorP.innerHTML = `Puntuación Jugador: ${puntajeJugador}`;
+    puntuacionMaquinaP.innerHTML = `Puntuación Máquina: ${puntajeMaquina}`;
+}
+
+function mostrarResultado(resultado) {
+    const resultadoDiv = document.getElementById('resultado');
+    resultadoDiv.innerHTML = `<h2>${resultado}</h2>`;
 }
 
 async function recibirCarta() {
@@ -65,55 +119,45 @@ async function recibirCarta() {
 
         jugadorMazo.push(data.cards[0]);
         mostrarCartasEnMano([data.cards[0]], 'jugador');
-        mostrarPuntuacion();
-        calcularPuntajes();
+        calcularPuntajes(); // Actualizar la puntuación después de recibir una carta
+        mostrarPuntuacionJugador();
 
         if (puntajeJugador === 21) {
-            finalizarJuego();
-        } else if (puntajeJugador > 21) {
-            mostrarResultado("¡Te has pasado de 21! Has perdido.");
-            mostrarSegundaCartaMaquina()
-        } else {
             turnoMaquina();
+        } else if (puntajeJugador > 21) {
+            turnoMaquina(); // Si el jugador se pasa de 21, finalizar el juego inmediatamente
+        } else if (puntajeJugador < 21) {
+            return;
         }
     }
-}
-
-function plantarse() {
-    finalizarJuego();
-    turnoMaquina();
-}
-
-function mostrarPuntuacion() {
-    const infoJuegoDiv = document.getElementById('info-juego');
-    infoJuegoDiv.innerHTML = `<p>Puntuación Jugador: ${puntajeJugador}</p><p>Puntuación Máquina: ${puntajeMaquina}</p>`;
-}
-
-function mostrarResultado(resultado) {
-    const resultadoDiv = document.getElementById('resultado');
-    resultadoDiv.innerHTML = `<h2>${resultado}</h2>`;
 }
 
 async function turnoMaquina() {
-    if (puntajeMaquina < 17) {
-        const respuesta = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
-        const data = await respuesta.json();
+    const respuesta = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
+    const data = await respuesta.json();
 
-        maquinaMazo.push(data.cards[0]);
-        mostrarCartasEnMano([data.cards[0]], 'maquina');
-        calcularPuntajes();
-        mostrarPuntuacion();
+    maquinaMazo.push(data.cards[0]);
+    mostrarCartasEnMano([data.cards[0]], 'maquina');
+    calcularPuntajeMaquina(); // Calcular el puntaje de la máquina después de tomar una carta
+    mostrarPuntuaciontotal(); // Mostrar la puntuación antes de calcularla
+    calcularPuntajeMaquina(); // Calcular el puntaje de la máquina después de tomar una carta
+    console.log("a")
 
-        if (puntajeMaquina === 21 || puntajeMaquina > 21) {
-            finalizarJuego();
-        } else {
-            // Detener el turno después de tomar una carta
-            return;
-        }
-    } else {
+    if (puntajeMaquina === 21 || puntajeMaquina > 21) {
         finalizarJuego();
+    } else if (puntajeMaquina < 17 ) {
+        turnoMaquina(); // Llamar recursivamente a turnoMaquina para que la máquina tome otro turno si es necesario
+        console.log("AA")
+    } else if (puntajeMaquina ===  17 || puntajeMaquina > 17 ) {
+        finalizarJuego(); // Finalizar el juego si el puntaje de la máquina es igual o mayor que 17
     }
 }
+
+
+function calcularPuntajeMaquina() {
+    puntajeMaquina = sumarCartas(maquinaMazo);
+}
+
 
 function sumarCartas(cartas) {
     let total = 0;
@@ -125,6 +169,7 @@ function sumarCartas(cartas) {
 
 function mostrarCartasEnMano(cartas, jugador) {
     const contenedor = document.getElementById(jugador === 'jugador' ? 'jugador-hand' : 'maquina-hand');
+    contenedor.innerHTML = ''; // Limpiar el contenedor antes de agregar las cartas
 
     cartas.forEach(carta => {
         const elementoCarta = document.createElement('img');
@@ -143,17 +188,22 @@ function calcularPuntajes() {
 function obtenerValorCarta(valor) {
     if (isNaN(valor)) {
         if (valor === 'ACE') {
-            return 11; // El as puede tener un valor de 11
-        } else if (valor === 'KING' || valor === 'QUEEN' || valor === 'JACK') {
-            return 10; // Las cartas de figuras (rey, reina, jota) tienen un valor de 10
+            return 11; // El as tiene inicialmente un valor de 11
+        } else if (['KING', 'QUEEN', 'JACK'].includes(valor)) {
+            return 10; // Reina, Rey y Jota valen 10
         } else {
-            return 10; // Otras cartas de figuras tienen un valor de 10
+            return parseInt(valor);
         }
     } else {
         return parseInt(valor);
     }
 }
 
+
+
+
 document.addEventListener('DOMContentLoaded', iniciarJuego);
 document.getElementById('hit-btn').addEventListener('click', recibirCarta);
 document.getElementById('stand-btn').addEventListener('click', plantarse);
+document.getElementById('reiniciar-btn').addEventListener('click', reiniciarJuego);
+

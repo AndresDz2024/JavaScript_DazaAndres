@@ -1,5 +1,6 @@
 body {
-    background: linear-gradient(to bottom, #2ecc71, #27ae60);
+    background: linear-gradient(to bottom, #2fa839, #52fa60);
+    min-height: 100vh;
     color: #fff;
     font-family: Arial, sans-serif;
     text-align: center;
