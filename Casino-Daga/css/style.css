@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-size: 2vi;
+    color: #fff;
+    text-shadow: 0 0 0.5vi yellow;
+}
+h1{
+    position: absolute;
+    top: 15vi;
+    left: 41.5vi;
+}
+body{
+    background-image: url(../storage/img/fondo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+img{
+    position: absolute;
+    width: 15vi;
+    top: 2vi;
+    left: 40vi;
+}
+
+.Black{
+    position: absolute;
+    top: 30vi;
+    left: 30vi;
+}
+.Mayor{
+    position: absolute;
+    top: 30vi;
+    left: 60vi;
+}
+.Ayuda{
+    position: absolute;
+    top: 30vi;
+    left: 45vi;
+}
+
