@@ -8,7 +8,6 @@
 body {
     background-image:url(../storage/img/fondo.jpg);
     background-size: cover;
-    color: #000;
     text-align: center;
     padding: 2vi;
 }
@@ -72,7 +71,10 @@ body {
     background-color: #ffe600;
     color: #fff;
 }
-
+.p{
+    color: #ffffff;
+    text-shadow: 0 0 0.5vi #973903;
+}
 #puntuacion-jugador{
     position: absolute;
     top: 30.5vi;
@@ -90,6 +92,8 @@ body {
     top: 37vi;
     font-weight: bold;
     font-size: 2vi;
+    color: #ffffff;
+    text-shadow: 0.3vi 0.3vi #100152;
 }
 .radio {
     position: absolute;
@@ -106,4 +110,22 @@ body {
   
 .radio{
     accent-color: rgb(6, 161, 14);
+}
+.cajaRacha{
+    font-size: 2vi;
+    top: 21vi;
+    left: 68vi;
+    position: absolute;
+    background-color: #ffffff25;
+    color: #c3df61;
+    text-shadow: 0 0 0.5vi #570f0f;
+    width: 20vi;
+    height: 10vi;
+    align-items: center;
+    border-radius: 0.8vi;
+    padding: 2vi;
+}
+
+#idJ_victorias{
+    padding-bottom: 5vi;
 }

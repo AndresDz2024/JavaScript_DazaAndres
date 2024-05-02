@@ -6,6 +6,10 @@ let puntajeJugador = 0;
 let puntajeMaquina = 0;
 let deckId = null;
 let turnoMaquinaActivo = false;
+let contador_J = 0;
+let contador_M = 0;
+mostrarRachaJ();
+mostrarRachaM();
 
 const CasinoSong = document.querySelector('.CasinoSong');
 
@@ -15,6 +19,14 @@ volumeControl.addEventListener('input', function() {
   CasinoSong.volume = this.value;
 });
 
+function mostrarRachaJ() {
+    const RachaJ = document.getElementById('idJ_victorias');
+    RachaJ.textContent = `Racha del Jugador: ${contador_J}`;
+}
+function mostrarRachaM() {
+    const RachaM = document.getElementById('idM_victorias');
+    RachaM.textContent = `Racha de la Máquina: ${contador_M}`;
+}
 
 function reiniciarJuego() {
     jugadorMazo = [];
@@ -23,7 +35,9 @@ function reiniciarJuego() {
     puntajeMaquina = 0;
     deckId = null;
     turnoMaquinaActivo = false;
-
+    mostrarRachaJ();
+    mostrarRachaM();
+    
     document.getElementById('jugador-hand').innerHTML = '';
     document.getElementById('maquina-hand').innerHTML = '';
 
@@ -57,7 +71,9 @@ async function iniciarJuego() {
     mostrarCartasEnMano([maquinaMazo[0]], 'maquina');
     ocultarSegundaCartaMaquina();
     calcularPuntajes();
-    mostrarPuntuacionJugador()
+    mostrarPuntuacionJugador();
+    mostrarRachaJ();
+    mostrarRachaM();
 }
 
 function ocultarSegundaCartaMaquina() {
@@ -84,15 +100,20 @@ async function finalizarJuego() {
         let resultado = '';
         if (puntajeJugador > 21) {
             resultado = "¡Te has pasado de 21! Has perdido.";
+            contador_M += 1
         } else if (puntajeMaquina > 21 || puntajeJugador > puntajeMaquina) {
             resultado = "¡Felicidades! Has ganado.";
+            contador_J += 1
         } else if (puntajeJugador < puntajeMaquina) {
             resultado = "La máquina ha ganado.";
+            contador_M += 1
         } else {
             resultado = "Empate.";
         }
 
         mostrarResultado(resultado);
+        mostrarRachaJ();
+        mostrarRachaM();
     }
 
 function plantarse() {
@@ -213,4 +234,5 @@ document.addEventListener('DOMContentLoaded', iniciarJuego);
 document.getElementById('hit-btn').addEventListener('click', recibirCarta);
 document.getElementById('stand-btn').addEventListener('click', plantarse);
 document.getElementById('reiniciar-btn').addEventListener('click', reiniciarJuego);
+
 
