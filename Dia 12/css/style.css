@@ -1,50 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto+Slab:wght@100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Fjalla', swap; 
+}
+
 body {
-    background: linear-gradient(to bottom, #2fa839, #52fa60);
-    min-height: 100vh;
-    color: #fff;
-    font-family: Arial, sans-serif;
+    background-image:url(../storage/img/fondo.jpg);
+    background-size: cover;
+    color: #000;
     text-align: center;
-    padding: 20px;
+    padding: 2vi;
+}
+.title{
+    top: 0vi;
+    left: 42vi;
+    position: absolute;
+    width: 15vi;
 }
 
-h1 {
-    margin-bottom: 20px;
+.sonido{
+    position: absolute;
+    left: 70vi;
+    width: 2vi;
 }
-
-.hand {
-    display: flex;
+.hand_player {
+    position: absolute;
+    top: 26vi;
+    left: 40.2vi;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 0vi;
+    width: 19vi;
+}
+.hand_machine {
+    position: absolute;
+    top: 12vi;
+    left: 31.5vi;
+    height: vi;
+    justify-content: center;
+    margin-bottom: 0vi;
+    width: 36vi;
 }
 
 .card {
-    width: 100px;
-    height: auto;
-    margin: 5px;
-    border-radius: 5px;
+    position: relative;
+    margin: 2vi;
+    width: 5vi;
+    border-radius: 0.2vi;
 }
 
 #info-juego {
-    margin-bottom: 20px;
+    font-size: 2vi;
+    position: relative;
+    top: 35vi;
+    justify-content: center;
+    align-items: center;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 5px;
+.botones {
+    font-size: 2vi;
+    padding: 1vi 2vi;
+    margin: 1vi;
     border: none;
-    background-color: #fff;
-    color: #2ecc71;
+    background-color: #f0ff1c;
+    color: #000000;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 2vi;
 }
 
-button:hover {
-    background-color: #2ecc71;
+.botones:hover {
+    background-color: #ffe600;
     color: #fff;
 }
 
+#puntuacion-jugador{
+    position: absolute;
+    top: 30.5vi;
+    left: 10vi;
+    font-size: 2vi;
+}
+#puntuacion-maquina{
+    position: absolute;
+    top: 16.5vi;
+    left: 70vi;
+    font-size: 2vi;
+}
 #resultado {
-    font-size: 24px;
+    position: relative;
+    top: 37vi;
     font-weight: bold;
+    font-size: 2vi;
+}
+.radio {
+    position: absolute;
+    top: 2.9vi;
+    left: 73vi;
+    height: 0.2vi;
+    width: 8vi;
+    background-color: #c0f10c;
+    border: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+  
+.radio{
+    accent-color: rgb(6, 161, 14);
 }

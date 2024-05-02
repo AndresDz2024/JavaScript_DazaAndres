@@ -7,15 +7,22 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h1>Blackjack (21)</h1>
-    <div id="jugador-hand" class="hand"></div>
-    <div id="maquina-hand" class="hand"></div>
+    <img src="./storage/img/sonido.png" class="sonido" alt="">
+    <input class="radio" type="range" min="0" max="1" step="0.01" value="10" id="volumeControl">
+    <audio class="CasinoSong" controls autoplay loop style="display: none;">
+        <source src="./storage/audio/Alternative 1.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+   <img src="./storage/img/title.png" class="title" alt="">
+    <div id="jugador-hand" class="hand_player"></div>
+    <div id="maquina-hand" class="hand_machine"></div>
+    <p id="puntuacion-jugador"></p>
+    <p id="puntuacion-maquina"></p>
     <div id="info-juego">
-        <p id="puntuacion-jugador"></p>
-        <p id="puntuacion-maquina"></p>
-        <button id="hit-btn">Recibir Carta</button>
-        <button id="stand-btn">Plantarse</button>
-        <button id="reiniciar-btn">Reiniciar Juego</button>
+
+        <button class="botones" id="hit-btn">Recibir Carta</button>
+        <button class="botones" id="stand-btn">Plantarse</button>
+        <button class="botones" id="reiniciar-btn">Reiniciar Juego</button>
 
     </div>
     <div id="resultado"></div>

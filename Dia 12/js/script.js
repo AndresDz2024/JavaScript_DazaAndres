@@ -7,6 +7,15 @@ let puntajeMaquina = 0;
 let deckId = null;
 let turnoMaquinaActivo = false;
 
+const CasinoSong = document.querySelector('.CasinoSong');
+
+const volumeControl = document.getElementById('volumeControl');
+
+volumeControl.addEventListener('input', function() {
+  CasinoSong.volume = this.value;
+});
+
+
 function reiniciarJuego() {
     jugadorMazo = [];
     maquinaMazo = [];
@@ -135,19 +144,17 @@ async function recibirCarta() {
 async function turnoMaquina() {
     const respuesta = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
     const data = await respuesta.json();
-
+    ocultarBotones()
     maquinaMazo.push(data.cards[0]);
     mostrarCartasEnMano([data.cards[0]], 'maquina');
     calcularPuntajeMaquina(); // Calcular el puntaje de la máquina después de tomar una carta
     mostrarPuntuaciontotal(); // Mostrar la puntuación antes de calcularla
     calcularPuntajeMaquina(); // Calcular el puntaje de la máquina después de tomar una carta
-    console.log("a")
 
     if (puntajeMaquina === 21 || puntajeMaquina > 21) {
         finalizarJuego();
     } else if (puntajeMaquina < 17 ) {
         turnoMaquina(); // Llamar recursivamente a turnoMaquina para que la máquina tome otro turno si es necesario
-        console.log("AA")
     } else if (puntajeMaquina ===  17 || puntajeMaquina > 17 ) {
         finalizarJuego(); // Finalizar el juego si el puntaje de la máquina es igual o mayor que 17
     }
