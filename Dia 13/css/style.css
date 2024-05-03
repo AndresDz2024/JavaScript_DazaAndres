@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+    padding: 0%;
+}
+
+*{
+    margin: 0;
+    padding: 0%;
+    font-size: 1vi;
+}
+
+.caja-principal{
+    border: 0.1vi solid #cac2c2;
+}
+.cajita{
+    border-bottom: 0.1vi solid #cac2c2;
+}
+
+

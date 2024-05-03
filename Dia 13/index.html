@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="caja-principal"  >
+        <div class="cajita">Mis Heroes</div>
+        <div class="datos" >
+            <h2>Gestion de Heroes</h2>
+            <label for="N_personaje">Nombre Personaje</label>
+            <input type="text" class="datoInput" id="N_personaje">
+            <label for="N_actor">Nombre Actor</label>
+            <input type="text" class="datoInput" id="N_actor">
+            <label for="Edad_a">Edad Actor</label>
+            <input type="text" class="datoInput" id="Edad_a">
+            <label for="Ubicacion">Ubicacion</label>
+            <input type="text" class="datoInput" id="Ubicacion">
+            <label for="Poster">Poster</label>
+            <input type="text" class="datoInput" id="Poster">
+            <label for="Ubicacion2">Ubicacion</label>
+            <input type="date" class="datoInput" id="Ubicacion2">
+            <label for="Productora">Productora</label>
+            <select name="productora" class="datoInput" id="Productora">
+                <option value="Marvel">Marvel</option>
+                <option value="DC">DC</option>
+            </select>
+            <div class="registro">
+                <div>Registro de Trajes</div>
+                <div>
+                    <h2>Trajes del personaje</h2>
+                    <p>En esta sección podra registrar los nombres de los trajes usados por el actor en cada una de las películas</p>
+                    <button id="+">+</button>
+                </div>
+                <button onclick="activar()">Nuevo Heroe</div>
+                <button onclick="crearA()" id="Guardar" type="submit">Guardar Heroe</div>
+                <button onclick="desactivar()">Cancelar</div>
+            </div>
+
+        </div>
+    </div>
+    <tbody id="caja1"></tbody>
+</body>
+<script src="./js/script.js"></script>
+</html>
