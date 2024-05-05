@@ -12,17 +12,17 @@
         <div class="datos" >
             <h2>Gestion de Heroes</h2>
             <label for="N_personaje">Nombre Personaje</label>
-            <input type="text" class="datoInput" id="N_personaje">
+            <input required type="text" class="datoInput" id="N_personaje">
             <label for="N_actor">Nombre Actor</label>
-            <input type="text" class="datoInput" id="N_actor">
+            <input required type="text" class="datoInput" id="N_actor">
             <label for="Edad_a">Edad Actor</label>
-            <input type="text" class="datoInput" id="Edad_a">
+            <input required type="text" class="datoInput" id="Edad_a">
             <label for="Ubicacion">Ubicacion</label>
-            <input type="text" class="datoInput" id="Ubicacion">
+            <input required type="text" class="datoInput" id="Ubicacion">
             <label for="Poster">Poster</label>
-            <input type="text" class="datoInput" id="Poster">
+            <input required type="text" class="datoInput" id="Poster">
             <label for="Ubicacion2">Ubicacion</label>
-            <input type="date" class="datoInput" id="Ubicacion2">
+            <input required type="date" class="datoInput" id="Ubicacion2">
             <label for="Productora">Productora</label>
             <select name="productora" class="datoInput" id="Productora">
                 <option value="Marvel">Marvel</option>
@@ -33,16 +33,31 @@
                 <div>
                     <h2>Trajes del personaje</h2>
                     <p>En esta sección podra registrar los nombres de los trajes usados por el actor en cada una de las películas</p>
-                    <button id="+">+</button>
+                    <button id="addButton">+</button>
                 </div>
-                <button onclick="activar()">Nuevo Heroe</div>
-                <button onclick="crearA()" id="Guardar" type="submit">Guardar Heroe</div>
-                <button onclick="desactivar()">Cancelar</div>
             </div>
-
+            <button id="newHeroButton">Nuevo Heroe</button>
+            <button id="saveHeroButton">Guardar Heroe</button>
+            <button id="cancelButton">Cancelar</button>
+            <button id="showHero">Mostrar Heroe</button>
+            <button id="updateHero">Actualizar Heroe</button>
+            <button id="deleteHero">Eliminar Heroe</button>
         </div>
     </div>
-    <tbody id="caja1"></tbody>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre Personaje</th>
+                <th>Nombre Actor</th>
+                <th>Edad Actor</th>
+                <th>Ubicacion</th>
+                <th>Poster</th>
+                <th>Ubicacion2</th>
+                <th>Productora</th>
+            </tr>
+        </thead>
+        <tbody id="heroTableBody"></tbody>
+    </table>
+    <script src="./js/script.js"></script>
 </body>
-<script src="./js/script.js"></script>
 </html>
