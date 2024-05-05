@@ -1,19 +1,103 @@
-body{
-    margin: 0;
-    padding: 0%;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
-*{
-    margin: 0;
-    padding: 0%;
-    font-size: 1vi;
+.caja-principal {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.caja-principal{
-    border: 0.1vi solid #cac2c2;
-}
-.cajita{
-    border-bottom: 0.1vi solid #cac2c2;
+.cajita {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-radius: 5px;
 }
 
+.datos {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
 
+.datos h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.datoInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.registro {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.registro div {
+    margin-bottom: 10px;
+}
+
+.registro h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.registro p {
+    font-size: 14px;
+    color: #666;
+}
+
+button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:hover {
+    background-color: #e0e0e0;
+}

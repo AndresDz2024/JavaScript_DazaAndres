@@ -7,6 +7,8 @@ document.body.onload = function() {
     });
     registroDiv.style.display = 'none';
     tablaHeroes.style.display = 'none';
+    addButton.disabled = true;
+    saveHeroButton.disabled = true;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
