@@ -1,91 +1,222 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
 }
 
 .caja-principal {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 20vi;
+    max-width: 60vi;
+    background-color: #f0eeee;
+    border: 0.1vi solid  #dfd9d9;
+    border-radius: 1vi;
 }
 
 .cajita {
-    background-color: #007bff;
-    color: #fff;
-    font-size: 24px;
-    text-align: center;
-    padding: 10px 0;
-    margin-bottom: 20px;
-    border-radius: 5px;
+    margin-left: 0vi;
+    color: #000000;
+    font-size: 1vi;
+    border-bottom: 0.1vi solid  #dfd9d9;
+}
+.cajita p {
+    margin-left: 1vi;
+
 }
 
 .datos {
-    padding: 20px;
+    padding-top: 0.2vi;
+    padding-left: 0.5vi;
     background-color: #f9f9f9;
-    border-radius: 5px;
+    border-radius: 0.2vi;
+}
+
+label {
+    margin-left: 1vi;
+    font-size: 1vi;
+    margin-bottom: 1vi;
 }
 
 .datos h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 1.5vi;
 }
 
-.datoInput {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.LN_P {
+    margin-right: 20vi;
+}
+
+.LE_A {
+    margin-right: 24vi;
+
+}
+
+.L_po {
+    margin-right: 26.5vi;
+}
+select{
+    font-size: 1vi;
+    width: 57vi;
+    padding: 0.5vi;
+    margin-right: 1.5vi;
+    margin-left: 1vi;
+    margin-bottom: 1vi;
+    border: 0.2vi solid #ccc;
+    border-radius: 0.5vi;
     box-sizing: border-box;
 }
 
+.datoInput {
+    font-size: 1vi;
+    width: 26vi;
+    height: 1vi;
+    padding: 0.5vi;
+    margin-top: 0.5vi;
+    margin-left: 1.5vi;
+    margin-bottom: 1vi;
+    border: 0.2vi solid #ccc;
+    border-radius: 0.5vi;
+}
+
 .registro {
+    border: 0.2vi solid #8cb3d8;
     background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 5px;
-    margin-top: 20px;
+    border-radius: 0.5vi;
+    margin-top: 1.5vi;
+    margin-left: 1vi;
+    margin-bottom: 1.5vi;
+    width: 56.6vi;
 }
 
-.registro div {
-    margin-bottom: 10px;
+.registro{
+    margin-left: 1vi;
+    margin-bottom: 1vi;
 }
-
+.titulo-R{
+    border-bottom: 0.2vi solid #8cb3d8;
+}
+.titulo-R p{
+    margin-left: 1vi;
+    color: #000000;
+    font-size: 1vi;
+}
 .registro h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    margin-left: 1vi;
+    font-size: 1.5vi;
+    margin-bottom: 1vi;
+    color: #3f8cff;
+
 }
 
-.registro p {
-    font-size: 14px;
-    color: #666;
+.Text_info  {
+    margin-left: 1vi;
+    font-size: 1.2vi;
+    color: #007bff;
 }
 
-button {
-    padding: 10px 20px;
-    margin-right: 10px;
+#newHeroButton {
+    font-size: 1vi;
+    padding: 1vi 1vi;
+    margin-left: 1vi;
+    margin-bottom: 1vi;
     border: none;
-    background-color: #007bff;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 0.5vi;
+    background-color: #302f2f;
     cursor: pointer;
 }
-
-button:hover {
-    background-color: #0056b3;
+#saveHeroButton {
+    font-size: 1vi;
+    padding: 1vi 1vi;
+    margin-left: 1vi;
+    border: none;
+    color: #fff;
+    border-radius: 0.5vi;
+    background-color: #2449ee;
+    cursor: pointer;
+}
+#cancelButton{
+    font-size: 1vi;
+    padding: 1vi 1vi;
+    margin-left: 1vi;
+    border: none;
+    color: #fff;
+    border-radius: 0.5vi;
+    background-color: #ee2424;
+    cursor: pointer;
+}
+#showHero{
+    font-size: 1vi;
+    padding: 1vi 1vi;
+    margin-left: 1vi;
+    border: none;
+    color: #fff;
+    border-radius: 0.5vi;
+    background-color: #eeda24;
+    cursor: pointer;
+}
+#updateHero{
+    font-size: 1vi;
+    padding: 1vi 1vi;
+    margin-left: 1vi;
+    border: none;
+    color: #fff;
+    border-radius: 0.5vi;
+    background-color: #3bee24;
+    cursor: pointer;
+}
+#deleteHero{
+    font-size: 1vi;
+    padding: 1vi 1vi;
+    margin-left: 1vi;
+    border: none;
+    color: #fff;
+    border-radius: 0.5vi;
+    background-color: #ee8624;
+    cursor: pointer;
+}
+#addButton{
+    font-size: 1vi;
+    padding: 1vi 1vi;
+    margin-bottom: 1vi;
+    margin-left: 1vi;
+    border: none;
+    color: #fff;
+    border-radius: 0.5vi;
+    background-color: #eea724;
+    cursor: pointer;
+}
+#newHeroButton:hover {
+    background-color: #5e5e5e;
+}
+#saveHeroButton:hover {
+    background-color: #496afc;
+}
+#cancelButton:hover {
+    background-color: #f04b4b;
+}
+#addButton:hover {
+    background-color: #e7bc6d;
+}
+#showHero:hover {
+    background-color: #e7dd83;
+}
+#updateHero:hover {
+    background-color: #90e784;
+}
+#deleteHero:hover {
+    background-color: #eb9a4e;
 }
 
 table {
-    width: 100%;
+    font-size: 1.1vi;
+    margin-left: 1vi;
+    margin-bottom: 2vi;
+    max-width: 58vi;
     border-collapse: collapse;
-    margin-top: 20px;
 }
 
 table th, table td {
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 1vi;
+    border: 0.2vi solid #ddd;
     text-align: left;
 }
 
@@ -100,4 +231,29 @@ table tbody tr:nth-child(even) {
 
 table tbody tr:hover {
     background-color: #e0e0e0;
+}
+
+.N_traje{
+    font-size: 1vi;
+    margin-left: 8vi;
+}
+.inputTraje{
+    border: 0.2vi solid #ccc;
+    border-radius: 0.5vi;
+    width: 35vi;
+    font-size: 1vi;
+    margin-left: 8vi;
+    margin-top: 1vi;
+    margin-bottom: 2vi;
+}
+.delButton{
+    font-size: 1vi;
+    padding: 0.5vi 1vi;
+    margin-bottom: 1vi;
+    margin-left: 1vi;
+    border: none;
+    color: #fff;
+    border-radius: 0.5vi;
+    background-color: #ee2424;
+    cursor: pointer;
 }

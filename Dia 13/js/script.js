@@ -5,6 +5,7 @@ document.body.onload = function() {
     camposEntrada.forEach(function(elemento) {
         elemento.disabled = true;
     });
+    Productora.disabled = true
     registroDiv.style.display = 'none';
     tablaHeroes.style.display = 'none';
     addButton.disabled = true;
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const deleteHero = document.getElementById('deleteHero');
     const updateHero = document.getElementById('updateHero');
     const heroTableBody = document.getElementById('heroTableBody');
+    const tablenew = document.getElementById('trajenuevo');
     const registroDiv = document.querySelector('.registro');
     const tablaHeroes = document.querySelector('table');
 
@@ -37,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
         camposEntrada.forEach(function(elemento) {
             elemento.disabled = false;
         });
+        Productora.disabled = false
         addButton.disabled = false;
         saveHeroButton.disabled = false;
         registroDiv.style.display = 'block';
@@ -47,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
         camposEntrada.forEach(function(elemento) {
             elemento.disabled = true;
         });
+        Productora.disabled = true
         addButton.disabled = true;
         saveHeroButton.disabled = true;
         registroDiv.style.display = 'none';
@@ -60,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         Productora.value = 'Marvel';
         tablaHeroes.style.display = 'none';
+        tablenew.innerHTML = '';
 
     }
 
@@ -78,24 +83,74 @@ document.addEventListener("DOMContentLoaded", function() {
         desactivarCampos();
     }
 
+    let counter = 1;
+
+    const nombresTrajes = [];
+    
+    function mostrarInuputTraje() {
+        const row = `
+            <div class="inputRow">
+                <label for="inpuT_${counter}" class="N_traje">Nombre Traje</label>
+                <br>
+                <input required type="text" class="inputTraje" id="inpuT_${counter}">
+                <button class="delButton">-</button>
+            </div>
+        `;
+        tablenew.insertAdjacentHTML('beforeend', row);
+        nombresTrajes.push(`inpuT_${counter}`);
+        counter++;
+        
+        const delButtons = document.querySelectorAll('.delButton');
+        delButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.parentNode.remove();
+            });
+        });
+    }
+    
+    
+    function agregarHeroe() {
+        const nuevoHeroe = {
+            N_personaje: N_personaje.value,
+            N_actor: N_actor.value,
+            Edad_a: Edad_a.value,
+            Ubicacion: Ubicacion.value,
+            Poster: Poster.value,
+            Ubicacion2: Ubicacion2.value,
+            Productora: Productora.value,
+            NombresTrajes: Array.from(document.querySelectorAll('.inputTraje')).map(input => input.value)
+        };
+        Heroes.push(nuevoHeroe);
+        limpiarCampos();
+        desactivarCampos();
+    }    
+
     function mostrarHeroeEncontrado(heroe) {
         tablaHeroes.style.display = 'block';
         heroTableBody.innerHTML = '';
-        const row = `
-            <tr>
-                <td>${heroe.N_personaje}</td>
-                <td>${heroe.N_actor}</td>
-                <td>${heroe.Edad_a}</td>
-                <td>${heroe.Ubicacion}</td>
-                <td>${heroe.Poster}</td>
-                <td>${heroe.Ubicacion2}</td>
-                <td>${heroe.Productora}</td>
-            </tr>
+    
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${heroe.N_personaje}</td>
+            <td>${heroe.N_actor}</td>
+            <td>${heroe.Edad_a}</td>
+            <td>${heroe.Ubicacion}</td>
+            <td>${heroe.Poster}</td>
+            <td>${heroe.Ubicacion2}</td>
+            <td>${heroe.Productora}</td>
         `;
-        heroTableBody.innerHTML = row;
-        tablaHeroes.style.display = 'block';
-
+    
+        heroTableBody.appendChild(row);
+    
+        const trajesRow = document.createElement('tr');
+        const td = document.createElement('td');
+        td.setAttribute('colspan', '7'); 
+        td.innerHTML = `<strong>Trajes:</strong> ${heroe.NombresTrajes.join(', ')}`;
+        trajesRow.appendChild(td);
+    
+        heroTableBody.appendChild(trajesRow);
     }
+    
     
     function buscarHeroe(criterio) {
         let heroeEncontrado = null;
@@ -160,6 +215,7 @@ document.addEventListener("DOMContentLoaded", function() {
             buscarHeroe(criterio);
         }
     });
+    addButton.addEventListener('click', mostrarInuputTraje);
 
     newHeroButton.addEventListener('click', activarCampos);
     cancelButton.addEventListener('click', function() {

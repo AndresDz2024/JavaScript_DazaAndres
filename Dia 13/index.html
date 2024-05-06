@@ -8,32 +8,46 @@
 </head>
 <body>
     <div class="caja-principal"  >
-        <div class="cajita">Mis Heroes</div>
+        <div class="cajita"><p>Mis Heroes</p></div>
         <div class="datos" >
             <h2>Gestion de Heroes</h2>
-            <label for="N_personaje">Nombre Personaje</label>
+            <label class="LN_P" for="N_personaje">Nombre Personaje</label>
+            <label class="LN_A" for="N_actor">Nombre Actor</label>
+            <br>
             <input required type="text" class="datoInput" id="N_personaje">
-            <label for="N_actor">Nombre Actor</label>
             <input required type="text" class="datoInput" id="N_actor">
-            <label for="Edad_a">Edad Actor</label>
+            <br>
+            <label class="LE_A" for="Edad_a">Edad Actor</label>
+            <label class="L_U" for="Ubicacion">Ubicacion</label>
+            <br>
             <input required type="text" class="datoInput" id="Edad_a">
-            <label for="Ubicacion">Ubicacion</label>
             <input required type="text" class="datoInput" id="Ubicacion">
-            <label for="Poster">Poster</label>
+            <br>
+            <label class="L_po" for="Poster">Poster</label>
+            <label class="L_U2" for="Ubicacion2">Ubicacion</label>
+            <br>
             <input required type="text" class="datoInput" id="Poster">
-            <label for="Ubicacion2">Ubicacion</label>
             <input required type="date" class="datoInput" id="Ubicacion2">
-            <label for="Productora">Productora</label>
-            <select name="productora" class="datoInput" id="Productora">
+            <br>
+            <label class="L_P" for="Productora">Productora</label>
+            <br>
+            <select name="productora"  id="Productora">
                 <option value="Marvel">Marvel</option>
                 <option value="DC">DC</option>
+                <option value="LionsGate">LionsGate</option>
+
             </select>
             <div class="registro">
-                <div>Registro de Trajes</div>
+                <div class="titulo-R"><p>Registro de Trajes</p></div>
                 <div>
                     <h2>Trajes del personaje</h2>
-                    <p>En esta sección podra registrar los nombres de los trajes usados por el actor en cada una de las películas</p>
-                    <button id="addButton">+</button>
+                    <p class="Text_info">En esta sección podra registrar los nombres de los trajes usados por el actor en cada una de las películas</p>
+                    <div>
+                        <button id="addButton">+</button>
+                        <div id="trajenuevo">
+                            <div id="inputR"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <button id="newHeroButton">Nuevo Heroe</button>
@@ -43,21 +57,21 @@
             <button id="updateHero">Actualizar Heroe</button>
             <button id="deleteHero">Eliminar Heroe</button>
         </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre Personaje</th>
+                    <th>Nombre Actor</th>
+                    <th>Edad Actor</th>
+                    <th>Ubicacion</th>
+                    <th>Poster</th>
+                    <th>Ubicacion2</th>
+                    <th>Productora</th>
+                </tr>
+            </thead>
+            <tbody id="heroTableBody"></tbody>
+        </table>    
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Nombre Personaje</th>
-                <th>Nombre Actor</th>
-                <th>Edad Actor</th>
-                <th>Ubicacion</th>
-                <th>Poster</th>
-                <th>Ubicacion2</th>
-                <th>Productora</th>
-            </tr>
-        </thead>
-        <tbody id="heroTableBody"></tbody>
-    </table>
     <script src="./js/script.js"></script>
 </body>
 </html>
