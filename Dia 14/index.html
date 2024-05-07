@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row justift-content-md-center mt-3">
+            <div class="col">
+            </div>
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                        Mis heroes
+                    </div>
+                    <div class="card-body">
+                        <h5>
+                            Gestión de heroes
+                        </h5>
+                        <div class="container">
+                            <form id="frmDataHero" class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="N_personaje" class="form-label">Nombre Personaje</label>
+                                            <br>
+                                            <input style="width: 100%;" type="text" class="datoInput" name="characterName" id="N_personaje" required="" class="form-control"></input>    
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="N_actor" class="form-label">Nombre Actor</label>
+                                            <br>
+                                            <input style="width: 100%;" type="text" class="datoInput" name="actorName" id="N_actor" required="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="Edad_a" class="form-label">Edad Actor</label>
+                                            <br>
+                                            <input style="width: 100%;" type="text" class="datoInput" name="age" id="Edad_a" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="Ubicacion" class="form-label">Ubicación</label>
+                                            <br>
+                                            <input style="width: 100%;" type="text" class="datoInput" name="cityName" id="Ubicacion" class="form-control"></input>
+                                            <div id="cityNameAux" class="form-text">
+                                                Nombre de la ciudad de origen
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="Poster" class="form-label">Poster</label>
+                                            <br>
+                                            <input style="width: 100%;" type="text" class="datoInput" name="poster" id="Poster" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="fecha" class="form-label">Fecha</label>
+                                            <br>
+                                            <input style="width: 100%;"  type="date" class="datoInput" name="dateAppears" id="fecha" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label for="Productora" class="form-label">Productora</label>
+                                            <select name="producer" id="Productora" class="form-select">
+                                                <option value="Marvel">Marvel</option>
+                                                <option value="DC">DComics</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row registro" id="grpSuites">
+                                    <div class="col">
+                                        <div class="card border-primary mb-3" style="max-width: 100%;">
+                                        <div class="card-header">
+                                            Registro de Trajes
+                                        </div>
+                                        <div class="card-body text-primary">
+                                            <h5 class="card-title">Traje del personaje</h5>
+                                            <p>En esta sección podrás registrar los nombres de los trajes usados por el actor en cada 
+                                                una de las peliculas.
+                                            </p>
+                                            <a class="btn btn-warning" id="addButton" href="#" id="addSuite">+</a>
+                                            <div class="" style="width: 100%;">
+                                                <div id="trajenuevo">
+                                                    <div id="inputR"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nombre Personaje</th>
+                                            <th scope="col">Nombre Actor</th>
+                                            <th scope="col">Edad Actor</th>
+                                            <th scope="col">Ubicacion</th>
+                                            <th scope="col">Poster</th>
+                                            <th scope="col">Ubicacion2</th>
+                                            <th scope="col">Productora</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="heroTableBody"></tbody>
+                                </table>                                
+                            </form>
+                            <button id="newHeroButton" type="button" class="btn btn-dark">Nuevo Heroe</button>
+                            <button id="saveHeroButton" type="button" class="btn btn-primary">Guardar Heroe</button>
+                            <button id="cancelButton" type="button" class="btn btn-danger">Cancelar</button>
+                            <button id="showHero" type="button" class="btn btn-warning">Mostrar Heroe</button>
+                            <button id="updateHero" type="button" class="btn btn-success">Actualizar Heroe</button>
+                            <button id="deleteHero" type="button" class="btn btn-secondary">Eliminar Heroe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+            </div>  
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="./script.js"></script>
+</html>

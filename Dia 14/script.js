@@ -89,11 +89,19 @@ document.addEventListener("DOMContentLoaded", function() {
     
     function mostrarInuputTraje() {
         const row = `
-            <div class="inputRow">
-                <label for="inpuT_${counter}" class="N_traje">Nombre Traje</label>
-                <br>
-                <input required type="text" class="inputTraje" id="inpuT_${counter}">
-                <button class="delButton">-</button>
+            <div class="inputRow row justift-content-md-center mt-3">
+            <div class="col"></div>
+            <div class="col-4">
+            <label for="inpuT_${counter}" class="N_traje text-dark">Nombre Traje</label>
+            <br>
+            <input required type="text" class="inputTraje" id="inpuT_${counter}">
+            <button class="delButton btn btn-danger">-</button>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
             </div>
         `;
         tablenew.insertAdjacentHTML('beforeend', row);
