@@ -1,7 +1,55 @@
+class NewUser extends HTMLElement {
+  connectedCallback() {
+    fetchRandomUser().then(userData => {
+      this.render(userData);
+    });
+  }
+
+  render(userData) {
+    const { Vnom, Pture, Vemai, Fecha, direccion, phoneN, Contra } = userData;
+
+    this.innerHTML = `
+      <div class="RandomUser_datos">
+        <div class="cajita"></div>
+        <div class="circulo">
+          <img id="imagen" src="${Pture}"></img>
+        </div>
+        <br>
+        <div id="cajitaN">
+          <p class="hello">Hi, my name is</p>
+          <p class="RandomUser">${Vnom}</p>
+        </div>
+        <div style="display: none;" id="cajitaE">
+          <p class="hello">My email address is</p>
+          <p class="RandomUser">${Vemai}</p>
+        </div>
+        <div style="display: none;" id="cajitaB">
+          <p class="hello">My birthday is</p>
+          <p class="RandomUser">${Fecha}</p>
+        </div>
+        <div style="display: none;" id="cajitaA">
+          <p class="hello">My address is</p>
+          <p class="RandomUser">${direccion}</p>
+        </div>
+        <div style="display: none;" id="cajitaP">
+          <p class="hello">My phone number is</p>
+          <p class="RandomUser">${phoneN}</p>
+        </div>
+        <div style="display: none;" id="cajitaC">
+          <p class="hello">My password is</p>
+          <p class="RandomUser">${Contra}</p>
+        </div>
+      </div>
+    `;
+  }
+}
+
+customElements.define('datos-usuario', NewUser);
+
 function fetchRandomUser() {
   let url = `https://randomuser.me/api/`;
 
-  fetch(url)
+  return fetch(url)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -9,57 +57,35 @@ function fetchRandomUser() {
       return response.json();
     })
     .then(data => {
-      displayRandomUser(data);
+      let Fecha = data.results['0'].dob.date;
+      Fecha = Fecha.slice(0,10);
+      Fecha = Fecha.split("-");
+      Fecha = Fecha[1]+"/" + Fecha[2]+"/" + Fecha[0];
+      let nombre1 = data.results['0'].name.first;
+      let nombre2 = data.results['0'].name.last;
+      let Vnom = nombre1 + " " + nombre2
+      let Pture = data.results['0'].picture.large
+      let Vemai = data.results['0'].email
+      let direccion1 = data.results['0'].location.street.number;
+      let direccion2 = data.results['0'].location.street.name;
+      let direccion = direccion1 + " " +direccion2;
+      let phoneN = data.results['0'].phone;
+      let Contra = data.results['0'].login.password
+      
+      return {
+        Vnom: Vnom,
+        Pture: Pture,
+        Vemai: Vemai,
+        Fecha: Fecha,
+        direccion: direccion,
+        phoneN: phoneN,
+        Contra: Contra
+      };
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
 }
-
-function displayRandomUser(data) {
-  const name = document.getElementById('name');
-
-  let Fecha = data.results['0'].dob.date;
-  Fecha = Fecha.slice(0,10);
-  Fecha = Fecha.split("-");
-  Fecha = Fecha[1]+"/" + Fecha[2]+"/" + Fecha[0]; 
-
-  name.innerHTML = `
-  <div class="RandomUser_datos">
-    <div class="cajita"></div>
-    <div class="circulo">
-      <img id="imagen" src="${data.results['0'].picture.large}"></img>
-    </div>
-    <br>
-    <div id="cajitaN">
-    <p class="hello">Hi, my name is</p>
-    <p class="RandomUser">${data.results['0'].name.first} ${data.results['0'].name.last}</p>
-    </div>
-    <div style="display: none;" id="cajitaE">
-    <p class="hello">My email address is</p>
-    <p class="RandomUser">${data.results['0'].email}</p>
-    </div>
-    <div style="display: none;" id="cajitaB">
-    <p class="hello">My birthday is</p>
-    <p class="RandomUser">${Fecha}</p>
-    </div>
-    <div style="display: none;" id="cajitaA">
-    <p class="hello">My address is</p>
-    <p class="RandomUser">${data.results['0'].location.street.number} ${data.results['0'].location.street.name}</p>
-    </div>
-    <div style="display: none;" id="cajitaP">
-    <p class="hello">My phone number is</p>
-    <p class="RandomUser">${data.results['0'].phone}</p>
-    </div>
-    <div style="display: none;" id="cajitaC">
-    <p class="hello">My password is</p>
-    <p class="RandomUser">${data.results['0'].login.password}</p>
-    </div>
-  </div>
-  `;
-}
-fetchRandomUser()
-
 
 
 function DNombre(){
