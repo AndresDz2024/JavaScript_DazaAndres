@@ -1,0 +1,65 @@
+html{
+    width: 100%;
+    height: 100%;
+}
+
+.RandomUser_datos{
+    border: 0.1vi solid #7d7c7c;
+    padding-top: 2vi;
+    height: 6vi;
+    width: 40vi;
+    background-color: rgb(250, 250, 240)
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-top: 4vi;
+}
+
+#imagen{
+    background-color: beige;
+    border-radius: 50%;
+    width: 8vi;
+    padding: 0.2vi;
+    border: 0.1vi solid #7d7c7c;
+}
+.hello{
+    position: relative;
+    top: 1vi;
+    margin: 0%;
+    color:#7d7c7c ;
+    font-size: 1vi;
+}
+.RandomUser{
+    position: relative;
+    top: 2vi;
+    padding: 0%;
+    margin: 0%;
+    font-size: 1vi;
+}
+.icono{
+    margin-right: 1vi;
+    position: relative;
+    top: 15vi;
+    padding-top: 0.3vi;
+    width: 2vi;
+    filter: invert(0.6);
+}
+
+.icono:hover{
+    transform: translateY(-0.5vi);
+    border-top: 0.2vi solid;
+    filter: invert(1) sepia(1) hue-rotate(25deg) saturate(1000%);
+}
+#cajitaN{
+    width: 10vi;
+    height: 2px;
+}
+
+#Contenedor{
+    border: 0.1vi solid #7d7c7c;
+    height: 30vi;
+    width: 40vi;
+}
