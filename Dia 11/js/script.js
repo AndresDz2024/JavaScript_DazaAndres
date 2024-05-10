@@ -1,5 +1,15 @@
 let searchPokemon = 1;
 
+document.addEventListener('DOMContentLoaded', function() {
+  var input = document.getElementById('Id');
+  input.addEventListener('keypress', function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      fetchpokemon();
+    }
+  });
+});
+
 function fetchpokemon() {
   let pokemonInput = document.getElementById('Id').value.toLowerCase();
   let url = `https://pokeapi.co/api/v2/pokemon/${pokemonInput}`;
@@ -7,7 +17,11 @@ function fetchpokemon() {
   fetch(url)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        if (response.status === 404) {
+          throw new Error('Pokemon not found');
+        } else {
+          throw new Error('Network response was not ok');
+        }
       }
       return response.json();
     })
@@ -16,6 +30,9 @@ function fetchpokemon() {
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
+      if (error.message === 'Pokemon not found') {
+        displaypokemon({ name: null });
+      }
     });
 }
 
@@ -29,19 +46,29 @@ function displaypokemon(data) {
   let pokemonInfo = document.getElementById("pokeInfo");
 
   if (data.name) {
-    let pokemonImage = data.id >= 650 ? './storage/img/noimg.png' : data.sprites.versions['generation-v']['black-white'].animated.front_default;
-    pokemonInfo.innerHTML = `
+    if (data.sprites.versions['generation-v']['black-white'].animated.front_default) {
+      pokeimgID = data.sprites.versions['generation-v']['black-white'].animated.front_default;
+  } else{
+    pokeimgID = data.sprites.front_default;
+  }
+pokemonInfo.innerHTML = `
     <div class="pokemon_datos">
       <span class="pokemon_numero">${data.id} -</span>
       <span class="pokemon_nombre">${data.name}</span>
     </div>
-    <img class="pokemon__imagen" src=${pokemonImage}></img>
+    <img class="pokemon__imagen" src=${pokeimgID}></img>
     `;
     searchPokemon = data.id;
     playPokemonCry(data.cries.latest);
     console.log(searchPokemon)
   } else {
-    pokemonInfo.innerHTML = `<p>Error: Pokémon not found</p>`;
+    pokemonInfo.innerHTML = `
+    <div class="pokemon_datos">
+      <span class="pokemon_numero">-</span>
+      <span class="pokemon_nombre">Not found</span>
+    </div>
+    <img class="pokemon__imagen" src="./storage/img/noimg.png"></img>
+    `;
   }
 }
 
@@ -85,3 +112,4 @@ function renderPokemon(searchPokemon) {
   document.getElementById('Id').value = searchPokemon;
   fetchpokemon();
 }
+

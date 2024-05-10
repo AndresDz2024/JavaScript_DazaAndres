@@ -87,8 +87,10 @@ body {
 .radio {
   position: absolute;
   top: 7vi;
-  left: 9vi;
-  height: 5px;
+  left: 8vi;
+  height: 0.8vi;
+  border-radius: 5vi;
+  width: 10vi;
   background-color: #c50909;
   border: none;
   cursor: pointer;
